@@ -1,0 +1,56 @@
+# Created by http://gitignore.io
+.idea/
+.orig
+
+### Maven ###
+target/
+### ANT ####
+dist/
+
+### Java ###
+*.class
+
+# Package Files #
+*.war
+*.ear
+*.jar
+
+### Eclipse ###
+*.pydevproject
+.project
+.metadata
+bin/**
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
+logs/
+.FUSE*
+.log
+.swp 
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# CDT-specific
+.cproject
+
+# PDT-specific
+.buildpath
+
+# Mac OS
+.DS_Store
+.dat
+.idx
+
+/yeah1-cms/yeah1-cms/nbproject/private/
+# nodejs express module
+/yeah1/yeah1-cms/yeah1-cms/public_html/node_modules
