@@ -16,9 +16,6 @@ public class App {
 
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(App.class, args);
-        IService service = context.getBean(IService.class);
-        User user = new User();
-        user.setName("test");
-        service.process(user);
+
     }
 }

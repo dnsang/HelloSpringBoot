@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class ServiceImpl implements IService {
+    private int id = 0;
     @Autowired
     public void setRepository(IRepository repository) {
         this.repository = repository;
@@ -17,9 +18,17 @@ public class ServiceImpl implements IService {
 
     protected IRepository repository;
 
-    public void process(User obj) {
-        repository.put(obj);
-        System.out.println("Process : " + repository.get().getName());
+    @Override
+    public Integer addUser(String name) {
+        User u = new User();
+        u.setId(++id);
+        u.setName(name);
+        repository.put(u);
+        return u.getId();
+    }
 
+    @Override
+    public User getUser(int id) {
+        return repository.get(id);
     }
 }
