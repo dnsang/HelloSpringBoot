@@ -21,8 +21,11 @@ public class ServiceImplTest {
 
     @org.junit.Test
     public void testProcess() throws Exception {
-        User user = new User();
-        user.setName("user-name");
-        serviceImpl.process(user);
+        User u = new User();
+        u.setId(1);
+        u.setName("UserName");
+        serviceImpl.addUser(u);
+        User user = serviceImpl.getUser(u.getId());
+        assert user.getName().equals(u.getName());
     }
 }

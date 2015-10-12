@@ -19,12 +19,9 @@ public class ServiceImpl implements IService {
     protected IRepository repository;
 
     @Override
-    public Integer addUser(String name) {
-        User u = new User();
-        u.setId(++id);
-        u.setName(name);
-        repository.put(u);
-        return u.getId();
+    public boolean addUser(User user) {
+        repository.put(user);
+        return true;
     }
 
     @Override

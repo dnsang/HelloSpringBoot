@@ -3,6 +3,7 @@ package org.sangdn.example.spring.repositories;
 import org.sangdn.example.spring.domain.User;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -10,7 +11,7 @@ import java.util.Map;
  */
 @Repository
 public class RepositoryImpl implements IRepository {
-    private Map<Integer,User> users;
+    private Map<Integer,User> users =  new HashMap<Integer, User>();
     @Override
     public void put(User obj) {
         users.put(obj.getId(),obj);
