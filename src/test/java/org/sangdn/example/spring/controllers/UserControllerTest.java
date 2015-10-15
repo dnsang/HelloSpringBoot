@@ -82,6 +82,7 @@ public class UserControllerTest {
                 .statusCode(HttpStatus.SC_OK)
                 .body("result",Matchers.is(true))
         .when().post("/add");
+
     }
 
     @Test
