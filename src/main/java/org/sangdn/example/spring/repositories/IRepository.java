@@ -9,5 +9,5 @@ import java.util.Objects;
  */
 public interface IRepository {
     public  void put(User obj);
-    public  User get(Integer id);
+    public  User get(String id);
 }

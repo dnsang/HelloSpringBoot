@@ -1,7 +1,8 @@
 # Created by http://gitignore.io
 .idea/
 .orig
-
+#elasticsearch local data
+data/
 ### Maven ###
 target/
 ### ANT ####

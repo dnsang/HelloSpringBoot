@@ -11,7 +11,7 @@ import java.util.Map;
  */
 @Repository
 public class RepositoryImpl implements IRepository {
-    private Map<Integer,User> users =  new HashMap<Integer, User>();
+    private Map<String,User> users =  new HashMap<String, User>();
     @Override
     public void put(User obj) {
         users.put(obj.getId(),obj);
@@ -19,7 +19,7 @@ public class RepositoryImpl implements IRepository {
     }
 
     @Override
-    public User get(Integer id) {
+    public User get(String id) {
         return users.get(id);
     }
 }

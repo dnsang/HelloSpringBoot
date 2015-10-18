@@ -7,7 +7,7 @@ public class UserNotFoundException extends RuntimeException{
     public UserNotFoundException(){
         super();
     }
-    public  UserNotFoundException(Integer uid){
+    public  UserNotFoundException(Object uid){
         super("uid: " + uid + " not found");
     }
 }

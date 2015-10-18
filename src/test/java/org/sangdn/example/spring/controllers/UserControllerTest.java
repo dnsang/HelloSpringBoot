@@ -8,6 +8,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.sangdn.example.spring.App;
+import org.sangdn.example.spring.configuration.TestAppConfig;
 import org.sangdn.example.spring.domain.User;
 import org.sangdn.example.spring.service.IService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.boot.test.WebIntegrationTest;
+import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.Profile;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
@@ -30,9 +34,10 @@ import static org.junit.Assert.*;
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = App.class)
+@SpringApplicationConfiguration(classes = TestAppConfig.class)
 @WebAppConfiguration
 @IntegrationTest
+@TestPropertySource(locations = "classpath:application.properties")
 public class UserControllerTest {
     @Autowired
     protected IService service;
@@ -43,9 +48,9 @@ public class UserControllerTest {
     @Before
     public void setUp(){
         // setup data for test
-        u1 = new User(); u1.setId(1); u1.setName("User1");
-        u2 = new User(); u2.setId(2); u2.setName("User2");
-        u3 = new User(); u3.setId(3); u3.setName("User3");
+        u1 = new User(); u1.setId("1"); u1.setName("User1");
+        u2 = new User(); u2.setId("2"); u2.setName("User2");
+        u3 = new User(); u3.setId("3"); u3.setName("User3");
 
         service.addUser(u1);
         service.addUser(u2);
@@ -76,7 +81,7 @@ public class UserControllerTest {
 //                .body("result", Matchers.is(true));
 
         given()
-                .formParam("id",11)
+                .formParam("id","11")
                 .formParam("name","User11")
         .expect()
                 .statusCode(HttpStatus.SC_OK)

@@ -23,7 +23,7 @@ public class UserController {
 
     @RequestMapping(value = "/hello", method = RequestMethod.GET)
     @ResponseBody
-    public User sayHello(@RequestParam(value = "id",defaultValue = "1") int id){
+    public User sayHello(@RequestParam(value = "id",defaultValue = "1") String id){
         User u =service.getUser(id);
         if(u==null){
             throw new UserNotFoundException(id);
