@@ -8,6 +8,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.sangdn.example.spring.App;
+import org.sangdn.example.spring.configuration.ElasticSearchTestConfig;
 import org.sangdn.example.spring.configuration.TestAppConfig;
 import org.sangdn.example.spring.domain.User;
 import org.sangdn.example.spring.service.IService;
@@ -18,9 +19,12 @@ import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.boot.test.WebIntegrationTest;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.Profile;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import java.util.HashMap;
@@ -34,15 +38,17 @@ import static org.junit.Assert.*;
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = TestAppConfig.class)
+@SpringApplicationConfiguration(classes = App.class)
+
 @WebAppConfiguration
 @IntegrationTest
 @TestPropertySource(locations = "classpath:application.properties")
+
 public class UserControllerTest {
     @Autowired
     protected IService service;
-//    @Value("${local.sever.port}")
-    int port=8082;
+    @Value("${local.sever.port}")
+    int port;
 
     User u1,u2,u3;
     @Before

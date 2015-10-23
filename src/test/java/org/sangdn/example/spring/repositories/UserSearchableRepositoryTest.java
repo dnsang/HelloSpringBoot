@@ -3,7 +3,6 @@ package org.sangdn.example.spring.repositories;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.sangdn.example.spring.App;
-import org.sangdn.example.spring.configuration.ElasticSearchTestConfig;
 import org.sangdn.example.spring.configuration.TestAppConfig;
 import org.sangdn.example.spring.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,18 +19,16 @@ import static org.junit.Assert.*;
  * Created by sangdn on 10/17/15.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-//@SpringApplicationConfiguration(classes = TestAppConfig.class)
+@SpringApplicationConfiguration(classes = TestAppConfig.class)
 
-@ContextConfiguration(classes = {
-        TestAppConfig.class,
-        ElasticSearchTestConfig.class})
+//@ContextConfiguration(classes =
+//        TestAppConfig.class)
 
 public class UserSearchableRepositoryTest {
     @Autowired
     public void setUserSearchableRepository(UserSearchableRepository userSearchableRepository) {
         this.userSearchableRepository = userSearchableRepository;
     }
-
     protected UserSearchableRepository userSearchableRepository;
 
     @Test

@@ -2,18 +2,11 @@ package org.sangdn.example.spring.service;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.sangdn.example.spring.App;
-import org.sangdn.example.spring.configuration.ElasticSearchTestConfig;
 import org.sangdn.example.spring.configuration.TestAppConfig;
 import org.sangdn.example.spring.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.context.annotation.Import;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 import java.lang.annotation.Annotation;
 import java.util.Arrays;
@@ -26,11 +19,11 @@ import static org.junit.Assert.*;
  * Created by sangdn on 10/10/15.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {
-        TestAppConfig.class,
-        ElasticSearchTestConfig.class},
-loader = AnnotationConfigContextLoader.class)
+
+//@SpringApplicationConfiguration(classes = App.class)
+@SpringApplicationConfiguration(classes = TestAppConfig.class)
 public class ServiceImplTest {
+
     @Autowired
     ServiceImpl serviceImpl;
 
@@ -43,8 +36,9 @@ public class ServiceImplTest {
         User user = serviceImpl.getUser(u.getId());
         assert user.getName().equals(u.getName());
     }
+
     @Test
-    public void testSearch(){
+    public void testSearch() {
         User u = new User();
         u.setId("1");
         u.setName("username");
